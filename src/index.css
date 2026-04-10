@@ -1,0 +1,118 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  * { box-sizing: border-box; }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+
+  body {
+    background-color: #050810;
+    color: #e2e8f0;
+    font-family: 'DM Sans', sans-serif;
+    min-height: 100vh;
+    overflow-x: hidden;
+  }
+
+  ::-webkit-scrollbar { width: 6px; }
+  ::-webkit-scrollbar-track { background: #080d1a; }
+  ::-webkit-scrollbar-thumb { background: rgba(56,189,248,0.3); border-radius: 3px; }
+  ::-webkit-scrollbar-thumb:hover { background: rgba(56,189,248,0.5); }
+
+  ::selection { background: rgba(56,189,248,0.3); color: #fff; }
+}
+
+@layer components {
+  .card {
+    @apply bg-ink-800 border border-white/5 rounded-2xl p-6;
+  }
+
+  .card-glow {
+    @apply card;
+    box-shadow: 0 0 0 1px rgba(56,189,248,0.08), 0 4px 24px rgba(0,0,0,0.4);
+  }
+
+  .btn-primary {
+    @apply bg-azure-500 hover:bg-azure-400 text-white font-display font-semibold
+           px-6 py-3 rounded-xl transition-all duration-200
+           hover:shadow-[0_0_20px_rgba(14,165,233,0.4)] active:scale-95;
+  }
+
+  .btn-ghost {
+    @apply border border-white/10 hover:border-azure-500/50 text-slate-300
+           hover:text-white font-display font-medium px-6 py-3 rounded-xl
+           transition-all duration-200 hover:bg-white/5 active:scale-95;
+  }
+
+  .input-field {
+    @apply bg-ink-700 border border-white/10 rounded-xl px-4 py-3
+           text-slate-200 placeholder-slate-500 font-body text-sm
+           focus:outline-none focus:border-azure-500/60 focus:bg-ink-600
+           transition-all duration-200 w-full;
+  }
+
+  .label {
+    @apply text-xs font-display font-semibold text-slate-400 uppercase tracking-widest mb-2 block;
+  }
+
+  .stat-value {
+    @apply font-display font-bold text-2xl text-white;
+  }
+
+  .stat-label {
+    @apply font-body text-xs text-slate-500 mt-1;
+  }
+
+  .badge {
+    @apply inline-flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-display font-semibold;
+  }
+
+  .badge-green  { @apply badge bg-jade-500/15 text-jade-400 border border-jade-500/20; }
+  .badge-red    { @apply badge bg-rose-500/15 text-rose-400 border border-rose-500/20; }
+  .badge-amber  { @apply badge bg-gold-500/15 text-gold-400 border border-gold-500/20; }
+  .badge-blue   { @apply badge bg-azure-500/15 text-azure-400 border border-azure-500/20; }
+  .badge-gray   { @apply badge bg-white/5 text-slate-400 border border-white/10; }
+
+  .section-title {
+    @apply font-display font-bold text-xl text-white;
+  }
+
+  .glow-line {
+    @apply h-px bg-gradient-to-r from-transparent via-azure-500/40 to-transparent;
+  }
+}
+
+/* Noise texture overlay */
+body::before {
+  content: '';
+  position: fixed;
+  inset: 0;
+  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noise'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noise)' opacity='0.04'/%3E%3C/svg%3E");
+  pointer-events: none;
+  z-index: 9999;
+  opacity: 0.4;
+}
+
+/* Chart overrides */
+.recharts-tooltip-wrapper .recharts-default-tooltip {
+  background: #0d1526 !important;
+  border: 1px solid rgba(56,189,248,0.2) !important;
+  border-radius: 12px !important;
+  font-family: 'DM Sans', sans-serif !important;
+}
+
+.recharts-cartesian-axis-tick-value {
+  fill: #64748b !important;
+  font-family: 'JetBrains Mono', monospace !important;
+  font-size: 11px !important;
+}
+
+/* Page transition */
+.page-enter {
+  animation: slideUp 0.4s ease-out;
+}

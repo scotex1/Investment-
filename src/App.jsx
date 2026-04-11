@@ -2,7 +2,7 @@ import { BrowserRouter, Routes, Route, Navigate } from 'react-router-dom'
 import { useEffect } from 'react'
 import useAuthStore from '@/store/authStore'
 
-import Layout from '@/components/layout/Layout.js
+import Layout from '@/components/layout/Layout.js'
 import LoginPage from '@/pages/LoginPage'
 import RegisterPage from '@/pages/RegisterPage'
 import DashboardPage from '@/pages/DashboardPage'
